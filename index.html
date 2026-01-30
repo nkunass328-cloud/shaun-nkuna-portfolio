@@ -3,115 +3,642 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shaun Nkuna | Web Design & Digital Marketing</title>
-  <meta name="description" content="Portfolio of Shaun Nkuna – web design, basic SEO, and digital marketing." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Shaun Nkuna Studio | Web, Branding & Digital Marketing</title>
+  <meta name="description" content="Shaun Nkuna Studio – website design, corporate branding, digital marketing and SEO foundations. Based in Middelburg, South Africa." />
+
   <style>
+    :root{
+      --bg:#070A12;
+      --bg2:#0B1020;
+      --card:#0E1630;
+      --line:rgba(255,255,255,.08);
+      --text:#EAF0FF;
+      --muted:#A8B3D6;
+      --brand:#22C55E;
+      --blue:#60A5FA;
+      --gold:#F59E0B;
+      --danger:#F43F5E;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter,Arial,sans-serif;
-      background:#0b0f14;
-      color:#e5e7eb;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(96,165,250,.18), transparent 55%),
+        radial-gradient(900px 600px at 80% 15%, rgba(245,158,11,.14), transparent 55%),
+        radial-gradient(900px 650px at 30% 85%, rgba(34,197,94,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
     }
-    header{
-      padding:40px 20px;
-      text-align:center;
-      background:#111827;
+
+    a{color:inherit}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,18,.60);
+      border-bottom:1px solid var(--line);
     }
-    h1{margin:0;font-size:36px}
-    p{color:#9ca3af;line-height:1.6}
-    .container{max-width:1000px;margin:auto;padding:40px 20px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-    .card{
-      background:#111827;
-      padding:20px;
-      border-radius:12px;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
     }
-    .card h3{margin-top:0}
+    .brand{
+      display:flex;align-items:center;gap:10px;min-width:220px
+    }
+    .mark{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;font-weight:900;
+      background:rgba(96,165,250,.14);
+      border:1px solid rgba(96,165,250,.35);
+      color:var(--blue);
+      letter-spacing:.5px;
+    }
+    .brand strong{display:block;font-size:14px;letter-spacing:.4px}
+    .brand span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+
+    .menu{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .menu a{
+      text-decoration:none; font-size:13px;
+      padding:9px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--text);
+      opacity:.95;
+    }
+    .menu a:hover{border-color:rgba(96,165,250,.55)}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 16px;
-      background:#22c55e;
-      color:#000;
-      text-decoration:none;
-      border-radius:20px;
-      font-weight:600;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:11px 14px;border-radius:999px;
+      font-weight:800;text-decoration:none;
+      border:1px solid transparent;
+      letter-spacing:.2px;
+      transition: transform .18s ease, filter .18s ease, border-color .18s ease;
+      white-space:nowrap;
     }
+    .btn:hover{transform: translateY(-1px); filter: brightness(.98)}
+    .btnPrimary{background:var(--brand); color:#04110a}
+    .btnGhost{background:transparent;border-color:var(--line);color:var(--text)}
+    .btnGhost:hover{border-color:rgba(245,158,11,.55)}
+
+    /* HERO */
+    header.hero{
+      padding:64px 0 26px;
+    }
+    .heroGrid{
+      display:grid; grid-template-columns: 1.12fr .88fr; gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .heroGrid{grid-template-columns:1fr} }
+
+    .panel{
+      background: rgba(14,22,48,.72);
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:44px; line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 520px){ .hero h1{font-size:34px} }
+    .lead{
+      margin:0 0 16px; color:var(--muted); line-height:1.7;
+      font-size:15.5px;
+    }
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      font-size:12px;
+      color:var(--text);
+    }
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--gold)}
+    .dot.green{background:var(--brand)}
+    .dot.blue{background:var(--blue)}
+
+    .statGrid{display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:12px}
+    .stat{
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      padding:14px;
+    }
+    .stat b{display:block; font-size:18px}
+    .stat span{display:block; margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4}
+
+    /* SECTIONS */
+    section{padding:26px 0}
+    .h2{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .h2 h2{margin:0; font-size:22px}
+    .h2 p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(14,22,48,.64);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 14px 45px rgba(0,0,0,.25);
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);line-height:1.7;font-size:13.5px}
+    .mini{
+      margin-top:12px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .pill{
+      font-size:12px; color:var(--text);
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+    }
+
+    /* PROJECTS */
+    .projGrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+    @media (max-width: 980px){ .projGrid{grid-template-columns:1fr} }
+
+    .proj{
+      padding:0;
+      overflow:hidden;
+      position:relative;
+    }
+    .projTop{
+      padding:18px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(800px 260px at 15% 10%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(800px 260px at 85% 10%, rgba(34,197,94,.14), transparent 60%),
+        rgba(255,255,255,.02);
+    }
+    .projBadge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--text);
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+    }
+    .projTitle{margin:10px 0 6px;font-size:18px}
+    .projDesc{margin:0;color:var(--muted);line-height:1.7;font-size:13.5px}
+    .projBody{padding:18px}
+    .klist{margin:0; padding-left:18px; color:var(--muted); line-height:1.8; font-size:13px}
+    .projBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    /* PRICING */
+    .priceGrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+    @media (max-width: 980px){ .priceGrid{grid-template-columns:1fr} }
+    .price{
+      position:relative;
+    }
+    .price .tag2{
+      position:absolute; top:14px; right:14px;
+      font-size:12px; padding:7px 10px;
+      border-radius:999px;
+      background:rgba(245,158,11,.14);
+      border:1px solid rgba(245,158,11,.35);
+      color:var(--gold);
+      font-weight:800;
+    }
+    .price h3{margin:0 0 6px}
+    .amount{font-size:26px;font-weight:900;margin:10px 0 10px}
+    .amount small{font-size:12px;color:var(--muted);font-weight:700}
+    .fine{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
+
+    /* FAQ */
+    details{
+      background: rgba(14,22,48,.55);
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:14px 16px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:800;
+    }
+    details p{margin:10px 0 0;color:var(--muted);line-height:1.7}
+
+    /* FOOTER */
     footer{
-      text-align:center;
-      padding:30px;
-      color:#9ca3af;
-      font-size:14px;
+      margin-top:22px;
+      border-top:1px solid var(--line);
+      padding:22px 0 36px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .footGrid{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:14px;
+    }
+    @media (max-width: 980px){ .footGrid{grid-template-columns:1fr} }
+    .links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .links a{
+      text-decoration:none;
+      border-bottom:1px dashed rgba(255,255,255,.25);
+      padding-bottom:2px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Shaun Nkuna</h1>
-  <p>Web Design • Digital Marketing • Social Media Strategy</p>
-  <a class="btn" href="https://wa.me/27765238594">Contact on WhatsApp</a>
-</header>
+  <!-- NAV -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="mark">SN</div>
+          <div>
+            <strong>Shaun Nkuna Studio</strong>
+            <span>Middelburg • Web • Branding • Digital</span>
+          </div>
+        </div>
 
-<div class="container">
+        <div class="menu">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I build clean, responsive websites for small businesses and help brands
-      improve their online presence through design, basic SEO setup, and
-      conversion-focused layouts.
-    </p>
-  </section>
+        <div class="ctaRow">
+          <a class="btn btnGhost" href="tel:+27682085749">Call</a>
+          <a class="btn btnPrimary" href="https://wa.me/27765238594" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <section>
-    <h2>Live Demo Projects</h2>
-    <div class="grid">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="panel">
+          <h1>Modern websites and digital presence that feel <span style="color:var(--blue)">custom</span> — not templated.</h1>
+          <p class="lead">
+            I build brand-ready websites and marketing foundations for businesses and organizations in South Africa.
+            The focus is clarity, trust, and conversion — especially on mobile, where most customers decide.
+          </p>
 
-      <div class="card">
-        <h3>Cleaning Service Website</h3>
-        <p>Service-based business site with WhatsApp booking and contact form.</p>
-        <a class="btn" href="https://nkunass328-cloud.github.io/cleaning-demo/" target="_blank">View Demo</a>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="https://wa.me/27765238594?text=Hi%20Shaun%2C%20I%20want%20a%20website%20quote.%20My%20business%20name%20is%20____.%20My%20services%20are%20____.%20My%20location%20is%20____." target="_blank">Get a Quote on WhatsApp</a>
+            <a class="btn btnGhost" href="#work">View Live Work</a>
+          </div>
 
+          <div class="chips">
+            <span class="chip"><span class="dot blue"></span> Mobile-first design</span>
+            <span class="chip"><span class="dot green"></span> WhatsApp conversion setup</span>
+            <span class="chip"><span class="dot"></span> SEO foundations</span>
+            <span class="chip"><span class="dot blue"></span> Fast launch timelines</span>
+          </div>
+        </div>
 
+        <div class="panel">
+          <div class="statGrid">
+            <div class="stat">
+              <b>Web + Marketing</b>
+              <span>Not just pages—structured to help people take action.</span>
+            </div>
+            <div class="stat">
+              <b>Clean builds</b>
+              <span>Fast-loading, responsive, easy to maintain.</span>
+            </div>
+            <div class="stat">
+              <b>Real use cases</b>
+              <span>Brand, food business, church/organization, company profile.</span>
+            </div>
+            <div class="stat">
+              <b>South Africa ready</b>
+              <span>WhatsApp-first conversion and practical content layout.</span>
+            </div>
+          </div>
+
+          <div style="margin-top:14px" class="mini">
+            <span class="pill">WhatsApp: 076 523 8594</span>
+            <span class="pill">Call: 068 208 5749</span>
+            <span class="pill">Middelburg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="h2">
+        <h2>Live Work</h2>
+        <p>Real live websites. Each project is structured for clarity and conversion.</p>
       </div>
 
-      <div class="card">
-        <h3>Printing Company Website</h3>
-        <p>Design & print company layout with services and quote request.</p>
-        <a class="btn" href="https://nkunass328-cloud.github.io/printing-demo/" target="_blank">View Demo</a>
+      <div class="projGrid">
+
+        <div class="card proj">
+          <div class="projTop">
+            <span class="projBadge"><span class="dot blue"></span> Brand Website</span>
+            <div class="projTitle">ShaunRepublic Clothing SA</div>
+            <p class="projDesc">Brand presence + product focus + direct customer contact.</p>
+          </div>
+          <div class="projBody">
+            <ul class="klist">
+              <li>Clear brand positioning and product categories</li>
+              <li>WhatsApp ordering pathway</li>
+              <li>Mobile-friendly layout</li>
+            </ul>
+            <div class="projBtns">
+              <a class="btn btnPrimary" href="https://nkunass328-cloud.github.io/Shaunrepublic-Clothing/" target="_blank">Open Live Site</a>
+              <a class="btn btnGhost" href="#contact">Request Similar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <div class="projTop">
+            <span class="projBadge"><span class="dot green"></span> Food Business</span>
+            <div class="projTitle">The Grace Chicken Dust</div>
+            <p class="projDesc">Menu highlights + pickup/delivery messaging + direct contact.</p>
+          </div>
+          <div class="projBody">
+            <ul class="klist">
+              <li>Fast “what do you sell?” clarity</li>
+              <li>Hours, location context, conversion CTA</li>
+              <li>WhatsApp-first customer flow</li>
+            </ul>
+            <div class="projBtns">
+              <a class="btn btnPrimary" href="https://nkunass328-cloud.github.io/The-grace-chicken-dust/" target="_blank">Open Live Site</a>
+              <a class="btn btnGhost" href="#contact">Request Similar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <div class="projTop">
+            <span class="projBadge"><span class="dot"></span> Organization</span>
+            <div class="projTitle">Faith Of Christians In Ministries</div>
+            <p class="projDesc">Service times, ministries, leadership and contact structure.</p>
+          </div>
+          <div class="projBody">
+            <ul class="klist">
+              <li>Service schedule and ministry categories</li>
+              <li>Clear contact channels (WhatsApp)</li>
+              <li>Trust-focused layout</li>
+            </ul>
+            <div class="projBtns">
+              <a class="btn btnPrimary" href="https://nkunass328-cloud.github.io/Faith-Of-Christians-In-Ministries-/" target="_blank">Open Live Site</a>
+              <a class="btn btnGhost" href="#contact">Request Similar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <div class="projTop">
+            <span class="projBadge"><span class="dot blue"></span> Company Profile</span>
+            <div class="projTitle">Motivep (Pty) Ltd</div>
+            <p class="projDesc">Company profile structure with services and references.</p>
+          </div>
+          <div class="projBody">
+            <ul class="klist">
+              <li>Corporate layout + compliance signals</li>
+              <li>Service clarity and reference listing</li>
+              <li>Strong contact section for quotes</li>
+            </ul>
+            <div class="projBtns">
+              <a class="btn btnPrimary" href="https://nkunass328-cloud.github.io/Motive-p--Pty--Ltd/" target="_blank">Open Live Site</a>
+              <a class="btn btnGhost" href="#contact">Request Similar</a>
+            </div>
+          </div>
+        </div>
 
       </div>
-
-      <div class="card">
-        <h3>Product Catalog Website</h3>
-        <p>Product grid with WhatsApp order buttons.</p>
-        <a class="btn" href="https://nkunass328-cloud.github.io/catalog-demo/" target="_blank">View Demo</a>
-
-
-
-      </div>
-
     </div>
   </section>
 
-  <section>
-    <h2>Services</h2>
-    <ul>
-      <li>Website design (HTML / CSS)</li>
-      <li>Website updates & maintenance</li>
-      <li>Basic SEO setup</li>
-      <li>Social media management & strategy</li>
-    </ul>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="h2">
+        <h2>Services</h2>
+        <p>Structured like an agency offering: clear deliverables, not vague promises.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Website & UI Design</h3>
+          <p>Modern, mobile-first websites that are easy to navigate and built to convert visitors into enquiries.</p>
+          <div class="mini">
+            <span class="pill">1–5 pages</span>
+            <span class="pill">WhatsApp CTA</span>
+            <span class="pill">Fast load</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Brand & Corporate Presence</h3>
+          <p>Company profile websites, service structure, trust sections, and clean visual hierarchy that matches your brand.</p>
+          <div class="mini">
+            <span class="pill">Company profile</span>
+            <span class="pill">Trust layout</span>
+            <span class="pill">Policy links</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Digital Marketing + SEO Foundations</h3>
+          <p>Basic SEO setup (titles/meta/structure), social media direction, and conversion-focused landing pages.</p>
+          <div class="mini">
+            <span class="pill">SEO basics</span>
+            <span class="pill">Content layout</span>
+            <span class="pill">Lead flow</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-</div>
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="h2">
+        <h2>Pricing</h2>
+        <p>Serious pricing that avoids undercharging. Transparent, scalable packages.</p>
+      </div>
 
-<footer>
-  © 2026 Shaun Nkuna • Portfolio Website
-</footer>
+      <div class="priceGrid">
+
+        <div class="card price">
+          <h3>Starter</h3>
+          <div class="amount">R1,800 <small>once-off</small></div>
+          <p>For a simple, clean presence (one page) that gets customers contacting you fast.</p>
+          <ul class="klist">
+            <li>1-page website</li>
+            <li>WhatsApp + click-to-call/email</li>
+            <li>Basic SEO (title/meta/structure)</li>
+            <li>Delivery in 2–4 days</li>
+          </ul>
+          <div class="projBtns">
+            <a class="btn btnPrimary" href="https://wa.me/27765238594?text=Hi%20Shaun%2C%20I%20want%20the%20Starter%20website%20package.%20Business%20name%3A%20____%20Services%3A%20____%20Location%3A%20____" target="_blank">Request Starter</a>
+          </div>
+          <p class="fine">Best for: local businesses, food, services, churches.</p>
+        </div>
+
+        <div class="card price">
+          <span class="tag2">Most Popular</span>
+          <h3>Business</h3>
+          <div class="amount">R3,500 <small>once-off</small></div>
+          <p>For businesses that need a stronger structure and a more premium look.</p>
+          <ul class="klist">
+            <li>Up to 4 pages/sections</li>
+            <li>Services + About + Contact + Gallery</li>
+            <li>Stronger design polish (spacing/typography)</li>
+            <li>Basic SEO + conversion improvements</li>
+            <li>Delivery in 4–7 days</li>
+          </ul>
+          <div class="projBtns">
+            <a class="btn btnPrimary" href="https://wa.me/27765238594?text=Hi%20Shaun%2C%20I%20want%20the%20Business%20website%20package.%20Business%20name%3A%20____%20Pages%3A%20____%20Location%3A%20____" target="_blank">Request Business</a>
+          </div>
+          <p class="fine">Best for: printing, construction, professional services.</p>
+        </div>
+
+        <div class="card price">
+          <h3>Pro</h3>
+          <div class="amount">R6,500 <small>once-off</small></div>
+          <p>For serious companies that need brand-level presentation and better trust signals.</p>
+          <ul class="klist">
+            <li>Up to 6 pages/sections</li>
+            <li>Case-study style layout</li>
+            <li>Brand styling pass (colors, tone, icons)</li>
+            <li>Copy polish for clarity and trust</li>
+            <li>Delivery in 7–12 days</li>
+          </ul>
+          <div class="projBtns">
+            <a class="btn btnPrimary" href="https://wa.me/27765238594?text=Hi%20Shaun%2C%20I%20want%20the%20Pro%20website%20package.%20Company%20name%3A%20____%20Needs%3A%20____%20Deadline%3A%20____" target="_blank">Request Pro</a>
+          </div>
+          <p class="fine">Best for: brands and companies needing credibility + design depth.</p>
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin:0 0 8px">Ongoing Support (optional)</h3>
+        <p style="margin:0;color:var(--muted);line-height:1.7">
+          If you want monthly updates, small changes, and content edits:
+        </p>
+        <div class="mini">
+          <span class="pill">R350/month — Basic updates</span>
+          <span class="pill">R850/month — Content + 2 sections refreshed</span>
+          <span class="pill">R1,500/month — Monthly landing + social support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ + CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="h2">
+        <h2>Contact</h2>
+        <p>Fastest response is WhatsApp. If you prefer email, that works too.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p>Tell me your business name, services, and location — I’ll reply with a plan and quote.</p>
+          <div class="projBtns">
+            <a class="btn btnPrimary" href="https://wa.me/27765238594" target="_blank">Message on WhatsApp</a>
+          </div>
+          <div class="mini">
+            <span class="pill">076 523 8594</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Call</h3>
+          <p>If you want to explain quickly, call me and I’ll outline the best package.</p>
+          <div class="projBtns">
+            <a class="btn btnGhost" href="tel:+27682085749">Call 068 208 5749</a>
+          </div>
+          <div class="mini">
+            <span class="pill">Business hours friendly</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Email</h3>
+          <p>Send your scope and deadline — I’ll respond with a proposal outline.</p>
+          <div class="projBtns">
+            <a class="btn btnGhost" href="mailto:shaunrepublicclothingsa@gmail.com?subject=Website%20Request%20-%20Shaun%20Nkuna%20Studio">Email</a>
+          </div>
+          <div class="mini">
+            <span class="pill">shaunrepublicclothingsa@gmail.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:grid; gap:12px">
+        <details>
+          <summary>Do you use templates?</summary>
+          <p>
+            I build from a clean base and customize per business: layout, sections, content hierarchy, and conversion flow.
+            The goal is a unique structure that fits your business, not copy-paste pages.
+          </p>
+        </details>
+        <details>
+          <summary>How do you start a project?</summary>
+          <p>
+            I ask for your business name, services, location, target customer, and any photos/logos you have.
+            Then I send a clear structure plan, timeline, and quote.
+          </p>
+        </details>
+        <details>
+          <summary>Can you add hosting and domain later?</summary>
+          <p>
+            Yes. I can guide you to set up domain/hosting, or keep it on a free host while you validate the site.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footGrid">
+        <div>
+          <b style="color:var(--text)">Shaun Nkuna Studio</b><br />
+          Middelburg, South Africa<br />
+          WhatsApp: 076 523 8594 • Call: 068 208 5749
+          <div class="links">
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <b style="color:var(--text)">Legal / Notes</b><br />
+          POPIA: customer info used only for quoting and communication.<br />
+          © 2026 Shaun Nkuna Studio. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
